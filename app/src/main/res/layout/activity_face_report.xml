@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@drawable/bgmain1"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="80"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
+        android:paddingTop="10dp">
+
+        <ImageButton
+            android:id="@+id/back_facereport"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@mipmap/ic_baseline_arrow_back_24" />
+
+        <ImageView
+            android:id="@+id/pic1"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/me1" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
+            android:text="健檢結果"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:lineSpacingExtra="7dp"
+            android:text="．眼白呈現黃色，表示肝臟、膽囊出現了異狀;眼部浮腫，則可能為腎臟功能出現異常。"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:lineSpacingExtra="7dp"
+            android:text="．鼻子屬脾胃，這個部位長痘痘，多與飲食有關，常見於愛吃高熱量食物，且吃的口味較重。"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:text="推薦產品"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="25"
+        android:orientation="horizontal"
+        android:paddingLeft="50dp">
+
+        <ImageView
+            android:id="@+id/pic2"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/thing4" />
+
+        <ImageView
+            android:id="@+id/pic3"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_marginLeft="20dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/thing5" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:background="#8fb1df"
+        >
+    </LinearLayout>
+</LinearLayout>

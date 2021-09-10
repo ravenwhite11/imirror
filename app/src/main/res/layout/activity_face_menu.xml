@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:background="@drawable/bgmain1">
+
+    <!--返回鍵-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical">
+        <ImageButton
+            android:id="@+id/back1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@mipmap/ic_baseline_arrow_back_24"/>
+    </LinearLayout>
+
+    <!--標題-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="面徵健檢分析鏡"
+            android:textSize="28dp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="個人健檢"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:paddingTop="0dp"
+            android:layout_marginLeft="50dp"/>
+        <ImageButton
+            android:id="@+id/btn1_1"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btn1_1"
+            android:layout_marginTop="10dp"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="遠距診斷"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:paddingTop="0dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_marginBottom="70dp"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/btn1_2"
+            android:layout_width="140dp"
+            android:layout_height="75dp"
+            android:background="@drawable/btn1_2"
+            />
+        <ImageButton
+            android:id="@+id/btn1_3"
+            android:layout_width="140dp"
+            android:layout_height="75dp"
+            android:background="@drawable/btn1_3"
+            android:layout_marginLeft="10dp"
+            />
+    </LinearLayout>
+
+
+
+
+    <!--底部-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
+        android:background="#8fb1df"
+        >
+    </RelativeLayout>
+
+</LinearLayout>
+
+
+
+
+
+
+

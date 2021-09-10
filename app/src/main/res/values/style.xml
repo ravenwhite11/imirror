@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="style0_15dp">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/design_default_color_on_secondary</item>
+    </style>
+    <style name="style1_red_25dp">
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">#DA6C6C</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="style2_link">
+
+        <item name="android:textColor">#7DD0F6</item>
+
+    </style>
+
+
+</resources>
+
+
