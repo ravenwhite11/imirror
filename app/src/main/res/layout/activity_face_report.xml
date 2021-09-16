@@ -10,39 +10,54 @@
     android:background="@drawable/bgmain1"
     >
 
+    <ImageButton
+        android:id="@+id/back_facereport"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@mipmap/ic_baseline_arrow_back_24" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/pic1"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/me1"
+        app:civ_border_width="3dp"
+        app:civ_border_color="#ffff"/>
+
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="80"
         android:orientation="vertical"
         android:paddingHorizontal="12dp"
-        android:paddingTop="10dp">
+        android:paddingTop="10dp"
+        android:layout_marginLeft="24dp">
 
-        <ImageButton
-            android:id="@+id/back_facereport"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:background="@mipmap/ic_baseline_arrow_back_24" />
-
-        <ImageView
-            android:id="@+id/pic1"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="-10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/me1" />
+        <com.github.mikephil.charting.charts.RadarChart
+            android:id="@+id/radarChart"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="28dp"/>
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_marginRight="30dp"
             android:text="健檢結果"
             android:textColor="@color/black"
             android:textSize="25sp" />
@@ -68,46 +83,87 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/textView15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="飲食建議"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textView77"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:lineSpacingExtra="7dp"
+            android:text="．日常食用少量堅果，如15克花生、7.5克榛子或7.5克杏仁，可以使心血管疾病的發病率（心肌梗死、中風及心血管疾病死亡率）降低。
+．蘋果果膠含量豐富，一個中等大小的蘋果所含果膠量達3.5克左右。蘋果含有豐富的鉀，是高血壓患者的好選擇。此外，鉀含量較高的食物還有香蕉、扁豆、西蘭花，都是好選擇。
+"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView45"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:text="生活習慣"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/textView72"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:lineSpacingExtra="7dp"
+            android:text="．坐推肝經，有利於梳肝理氣，去肝火、改氣色，肝經位置可坐在床上，右腿向前伸直，左腿彎曲平放腿內側朝上，彎曲腿正中間位置就是肝經，可兩腿交換推拿，從大腿根部推向膝蓋。
+．按壓太衝穴，太衝穴以泄為主，能解決肝氣鬱結的問題。太衝穴的位置在腳背上拇指和第二趾向上推，可以推到一個凹陷處，案蝦比其他地方敏感，即為太衝穴。
+"
+            android:textSize="18sp" />
+
+        <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
-            android:layout_marginRight="30dp"
             android:text="推薦產品"
             android:textColor="@color/black"
             android:textSize="25sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="18dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/pic2"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:scaleType="fitStart"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/thing1" />
+
+            <ImageView
+                android:id="@+id/pic3"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="25dp"
+                android:scaleType="fitStart"
+                android:src="@drawable/thing2" />
+        </LinearLayout>
     </LinearLayout>
+    </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="25"
-        android:orientation="horizontal"
-        android:paddingLeft="50dp">
 
-        <ImageView
-            android:id="@+id/pic2"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/thing4" />
-
-        <ImageView
-            android:id="@+id/pic3"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginLeft="20dp"
-            android:scaleType="fitStart"
-            android:src="@drawable/thing5" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:background="#8fb1df"
-        >
-    </LinearLayout>
 </LinearLayout>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.imirror"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.imirror">
     <!-- 設定讀寫及相機權限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -12,14 +11,13 @@
         android:required="true" />
 
     <application
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Imirror">
-
+        <activity android:name=".other.ProgressBar"></activity>
         <activity android:name=".MedicalReserveQuery" />
         <activity android:name=".MedicalReserve" />
         <activity android:name=".FaceReport" />
@@ -27,6 +25,8 @@
         <activity android:name=".cameraActivity.CameraTopRectView" />
         <activity android:name=".cameraActivity.CameraSurfaceView" />
         <activity android:name=".cameraActivity.TakePicActivity" />
+        <activity android:name=".classifier.Classifier" />
+        <activity android:name=".classifier.TensorFlowImageClassifier" />
         <activity android:name=".FaceMenu" />
         <activity android:name=".MainActivity">
             <intent-filter>

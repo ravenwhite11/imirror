@@ -264,10 +264,6 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
                         topView.getRectRight() - topView.getRectLeft(),
                         topView.getRectBottom() - topView.getRectTop());//TEST
 */
-
-
-
-
                 bm.compress(Bitmap.CompressFormat.JPEG, 100, bos);//将图片压缩到流中
 
             } catch (Exception e) {

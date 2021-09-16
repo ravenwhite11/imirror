@@ -8,9 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.github.ybq.android.spinkit.SpinKitView;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.DoubleBounce;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         Btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 intent.setClass(MainActivity.this, FaceMenu.class);
                 startActivity(intent);
             }
@@ -50,6 +55,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    private void loading() {
+
+        //View loadView = (FrameLayout) findViewById(R.id.spin_kit);
+        //loadView.setVisibility(View.GONE);
+        //Sprite doubleBounce = new DoubleBounce();
+        //SpinKitView spinKitView = (SpinKitView) findViewById(R.id.spin_kit);
+        //spinKitView.setMinimumWidth(10);  //寬高
+        //spinKitView.setMinimumHeight(10);
+
+    }
+
+    //幹嘛創這個//
     private void previewCamera() {
     }
 

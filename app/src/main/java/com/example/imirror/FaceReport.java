@@ -1,23 +1,13 @@
 package com.example.imirror;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.drawable.RoundedBitmapDrawable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.TextAppearanceSpan;
-import android.text.style.URLSpan;
-import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -25,7 +15,17 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.imirror.cameraActivity.TakePicActivity;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.imirror.classifier.Classifier;
+import com.example.imirror.classifier.TensorFlowImageClassifier;
+import com.example.imirror.other.LoadingUtils;
+import com.github.mikephil.charting.charts.RadarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.RadarData;
+import com.github.mikephil.charting.data.RadarDataSet;
+import com.github.mikephil.charting.data.RadarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.Interpreter;
@@ -44,16 +44,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
-import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class FaceReport extends AppCompatActivity {
 
@@ -61,13 +61,13 @@ public class FaceReport extends AppCompatActivity {
     private TextView mTextView;
     private ImageButton Back;
     private List<String> labels;
-    private Bitmap bitmap;
+    private Bitmap bitmap, bitmap2;
 
     protected Interpreter tflite;
     private MappedByteBuffer tfliteModel;
     private TensorImage inputImageBuffer;
-    private  int imageSizeX;
-    private  int imageSizeY;
+    private int imageSizeX;
+    private int imageSizeY;
     private TensorBuffer outputProbabilityBuffer;
     private TensorProcessor probabilityProcessor;
     //In ClassifierQuantizedMobileNet, normalization is not required.
@@ -77,27 +77,34 @@ public class FaceReport extends AppCompatActivity {
     private static final float PROBABILITY_MEAN = 0.0f;
     private static final float PROBABILITY_STD = 255.0f;
 
+    //測試
+    private Executor executor = Executors.newSingleThreadExecutor();
+    private Classifier classifier;
+    private static final String MODEL_PATH = "model.tflite";
+    private static final String LABEL_PATH = "face_dict.txt";
+    private static final int INPUT_SIZE = 150;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        LoadingUtils.showDialogForLoading(this,"Loading...");//啟動動畫
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_face_report);
 
         mShowImage = (ImageView) findViewById(R.id.pic1);
         mTextView = (TextView) findViewById(R.id.textView2);
         back_clicklisten();
+        Radarimage();
 
         Bundle bundle = getIntent().getExtras();
         String filePath = bundle.getString("url");
-        //Log.d("cindy", "Report頁面的filePath^^:" + filePath);
 
         if(filePath != null){
             setPic(filePath);
             Uri photoUri = Uri.fromFile(new File(filePath));
-            bitmap = getBitmapFromURL(photoUri);
-            //Log.d("cindy", "Report頁面的bitmap: " + bitmap);
+            bitmap = getBitmapFromURL(photoUri); // 從上頁取得Uri並轉成Bitmap格式
         }
+
 
         try{
             tflite = new Interpreter(loadmodelfile(this));
@@ -105,7 +112,9 @@ public class FaceReport extends AppCompatActivity {
             e.printStackTrace();
         }
         classfication();
+        LoadingUtils.closeLoading();//關閉動畫
     }
+
 
     /* 分析大師== */
     private void classfication() {
@@ -124,17 +133,42 @@ public class FaceReport extends AppCompatActivity {
 
         inputImageBuffer = new TensorImage(imageDataType); // 後面設定TensorFlow Lite interpreter所需的型態
 
-        outputProbabilityBuffer = TensorBuffer.createFixedSize(probabilityShape, probabilityDataType); //創造 the output tensor & processor
+        //--創建用於儲存结果的容器(the output tensor & processor)--//
+        outputProbabilityBuffer = TensorBuffer.createFixedSize(probabilityShape, probabilityDataType);
         probabilityProcessor = new TensorProcessor.Builder().add(getPostprocessNormalizeOp()).build(); //創造 the post processor for the output probability
 
         inputImageBuffer = loadImage(bitmap); //將圖片轉成TensorImage格式
+        ByteBuffer byteBuffer = convertBitmapToByteBuffer(bitmap,imageShape[0],imageShape[1],imageShape[3]);
 
         // Run inference
-        tflite.run(inputImageBuffer.getBuffer(),
+        tflite.run(byteBuffer,
                 outputProbabilityBuffer.getBuffer().rewind());
         show_result(); //顯示學習結果
     }
 
+    //測試
+    private ByteBuffer convertBitmapToByteBuffer(Bitmap bitmap,int BATCH_SIZE,int inputSize,int PIXEL_SIZE) {
+        ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4 * BATCH_SIZE * inputSize * inputSize * PIXEL_SIZE);
+
+        //Log.d("cindy", ""+tmp);
+        byteBuffer.order(ByteOrder.nativeOrder());
+
+        int cropSize = Math.min(bitmap.getWidth(), bitmap.getHeight());
+        bitmap = Bitmap.createScaledBitmap(bitmap, cropSize , cropSize, false);//將原始bitmap進行resize
+
+        int[] intValues = new int[bitmap.getWidth() * bitmap.getHeight()];
+        bitmap.getPixels(intValues, 0, bitmap.getWidth(), 0, 0, bitmap.getWidth(), bitmap.getHeight());
+        int pixel = 0;
+        for (int i = 0; i < inputSize; ++i) {
+            for (int j = 0; j < inputSize; ++j) {
+                final int val = intValues[pixel++];
+                byteBuffer.putFloat((((val >> 16) & 0xFF)-IMAGE_MEAN)/IMAGE_STD);
+                byteBuffer.putFloat((((val >> 8) & 0xFF)-IMAGE_MEAN)/IMAGE_STD);
+                byteBuffer.putFloat((((val) & 0xFF)-IMAGE_MEAN)/IMAGE_STD);
+            }
+        }
+        return byteBuffer;
+    }
 
     /** 轉換為 TensorImage 格式以進行高效處理並 applys preprocessing. **/
     private TensorImage loadImage(final Bitmap bitmap) {
@@ -152,7 +186,7 @@ public class FaceReport extends AppCompatActivity {
 
     // 讀取tflite檔案
     private MappedByteBuffer loadmodelfile(Activity activity) throws IOException {
-        AssetFileDescriptor fileDescriptor = activity.getAssets().openFd("plant_model.tflite");
+        AssetFileDescriptor fileDescriptor = activity.getAssets().openFd(MODEL_PATH);
         FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
         FileChannel fileChannel = inputStream.getChannel();
         long startoffset = fileDescriptor.getStartOffset();
@@ -169,40 +203,32 @@ public class FaceReport extends AppCompatActivity {
     /** 讀取Lable文字檔 並 顯示結果 **/
     private void show_result(){
         try{
-            labels = FileUtil.loadLabels(this,"plant_labels.txt");
+            labels = FileUtil.loadLabels(this,LABEL_PATH);
         }catch (Exception e){
             e.printStackTrace();
         }
         Map<String, Float> labeledProbability =
-                new TensorLabel(labels, probabilityProcessor.process(outputProbabilityBuffer))
-                        .getMapWithFloatValue();
+                new TensorLabel(labels, probabilityProcessor.process(outputProbabilityBuffer)).getMapWithFloatValue();
+        //Log.d("cindy", "labeledProbability.values: "+labeledProbability.values());//應該是機率
+
         float maxValueInMap =(Collections.max(labeledProbability.values()));
 
         for (Map.Entry<String, Float> entry : labeledProbability.entrySet()) {
-            if (entry.getValue()==maxValueInMap) {
+            //Log.d("cindy", "maxValueInMap: "+maxValueInMap);//最大值機率
+            //Log.d("cindy", "entry.getValue: "+entry.getValue());//各
+            //Log.d("cindy", "entry.getKey: "+entry.getKey());//各物品
+
+            if ( entry.getValue() == maxValueInMap ) {
                 //設定出現的文字
                 mTextView.setText(entry.getKey());
             }
         }
     }
 
-    private void back_clicklisten() {
-        Intent intent = new Intent();
-        Back = (ImageButton) findViewById(R.id.back_facereport);
-        //返回鍵設置
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent.setClass(FaceReport.this, FaceMenu.class);
-                startActivity(intent);
-            }
-        });
-    }
 
     /* 放置圖片於layout */
     private void setPic(String mCurrentPhotoPath) {
-
-        int targetW = 200; //得到ImageView的長寬
+        int targetW = 200;
         int targetH = 200;
 
         BitmapFactory.Options bmOptions = new BitmapFactory.Options();
@@ -223,7 +249,52 @@ public class FaceReport extends AppCompatActivity {
         mShowImage.setImageBitmap(bitmap);
     }
 
-    // Uri轉成BitMap格式(超級麻煩)
+    /* 雷達圖 */
+    private void Radarimage() {
+        RadarChart radarChart = findViewById(R.id.radarChart);
+
+        ArrayList<RadarEntry> radarArray = new ArrayList<>();
+        radarArray .add(new RadarEntry(30));
+        radarArray .add(new RadarEntry(24));
+        radarArray .add(new RadarEntry(13));
+        radarArray .add(new RadarEntry(20));
+        radarArray .add(new RadarEntry(12));
+
+        RadarDataSet radarDateSet = new RadarDataSet(radarArray, "分析結果");
+        radarDateSet.setColor(Color.rgb(168,218,175)); //外框顏色
+        radarDateSet.setDrawFilled(true); //填充
+        radarDateSet.setFillColor(Color.argb(127,168,218,175)); //內部填充
+        radarDateSet.setLineWidth(2f); //框線粗細
+        //radarDateSet.setValueTextColor(Color.RED);
+        //radarDateSet.setValueTextSize(14f);
+
+        RadarData radarData = new RadarData();
+        radarData .addDataSet(radarDateSet);
+
+        String[] labels = {"心","肝","腎","肺","脾"};
+
+        XAxis xAxis = radarChart.getXAxis();
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
+        xAxis.setTextSize(20);
+
+        radarChart.setData(radarData);
+    }
+
+    private void back_clicklisten() {
+        Intent intent = new Intent();
+        Back = (ImageButton) findViewById(R.id.back_facereport);
+        //返回鍵設置
+        Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //intent.setClass(FaceReport.this, FaceMenu.class);
+                //startActivity(intent);
+                onBackPressed();
+            }
+        });
+    }
+
+    /* Uri轉成BitMap格式(超級麻煩) */
     public Bitmap getBitmapFromURL(Uri uri) {
         InputStream Stream = null;
         InputStream inputStream = null;
@@ -256,7 +327,7 @@ public class FaceReport extends AppCompatActivity {
             }
             //解析到内存中去
             options.inJustDecodeBounds = false;
-//            根据uri重新获取流，inputstream在解析中发生改变了
+            //根据uri重新获取流，inputstream在解析中发生改变了
             Stream = getContentResolver().openInputStream(uri);
             Bitmap bitmap = BitmapFactory.decodeStream(Stream, null, options);
             return bitmap;
@@ -281,20 +352,14 @@ public class FaceReport extends AppCompatActivity {
 /*    private void setItem() {
         mTextView = (TextView) findViewById(R.id.item_txt);
         String str = "&honey melty\n蜂蜜澤亮柔順護理\n\n$1,199";
-
         SpannableString span = new SpannableString(str);
-        span.setSpan(new TextAppearanceSpan(this, R.style.style0_15dp), 0, str.length() - 6,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        span.setSpan(new TextAppearanceSpan(this, R.style.style1_red_25dp), str.length() - 6, str.length(),
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);*/
 
-/*        str += "\n\n\n更多資訊";
-        span.setSpan(new TextAppearanceSpan(this, R.style.style2_link), 31, 35,
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        str += "\n\n\n更多資訊";
+        span.setSpan(new TextAppearanceSpan(this, R.style.style2_link), 31, 35,Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         Log.d("cindy", Integer.toString(str.length()));
         span.setSpan(new URLSpan("http://www.google.com"), 0, str1.length(),
                 Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        mTextView.setText(span, TextView.BufferType.SPANNABLE);
+    }
 */
-/*        mTextView.setText(span, TextView.BufferType.SPANNABLE);
-    }*/
 }

@@ -6,108 +6,181 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity"
-    android:background="@drawable/bgmain1">
+    android:background="@drawable/girlbg">
 
     <!--返回鍵-->
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
         android:orientation="vertical">
+
         <ImageButton
             android:id="@+id/back1"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:background="@mipmap/ic_baseline_arrow_back_24"/>
-    </LinearLayout>
+            android:layout_marginTop="20dp"
+            android:background="@mipmap/ic_baseline_arrow_back_24"
+            />
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="170dp"
+            android:layout_marginTop="20dp"
+            android:text="iMirror"
+            android:textSize="20dp"
+            />-->
+    </RelativeLayout>
 
     <!--標題-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="0.2"
+        android:layout_marginBottom="30dp"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="面徵健檢分析鏡"
-            android:textSize="28dp"
+            android:textSize="32dp"
             android:textStyle="bold"
+
             />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2.5"
+        android:layout_weight="0.8"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:text="個人健檢"
             android:textStyle="bold"
-            android:textSize="18dp"
+            android:textSize="25sp"
             android:paddingTop="0dp"
-            android:layout_marginLeft="50dp"/>
-        <ImageButton
-            android:id="@+id/btn1_1"
-            android:layout_width="300dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/btn1_1"
-            android:layout_marginTop="10dp"
             />
 
-    </LinearLayout>
+        <ImageButton
+            android:id="@+id/btn1_1"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button_camera"
+            android:src="@drawable/camera_big"
+            android:text="我是圆形按钮" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="遠距診斷"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:paddingTop="0dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginBottom="10dp"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_marginBottom="70dp"
-        android:gravity="center">
+        android:layout_weight="0.15"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="遠距診斷"
+            android:textSize="25dp"
+            android:textStyle="bold"
 
-        <ImageButton
-            android:id="@+id/btn1_2"
-            android:layout_width="140dp"
-            android:layout_height="75dp"
-            android:background="@drawable/btn1_2"
-            />
-        <ImageButton
-            android:id="@+id/btn1_3"
-            android:layout_width="140dp"
-            android:layout_height="75dp"
-            android:background="@drawable/btn1_3"
-            android:layout_marginLeft="10dp"
             />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:id="@+id/btn1_2"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_reserve"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="9dp"
+            tools:layout_editor_absoluteY="26dp">
+
+            <ImageView
+
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="7dp"
+                android:src="@drawable/reserve_gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="13dp"
+                android:text="預約"
+                android:textColor="@color/gray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/btn1_3"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/button_reserve"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="9dp"
+            tools:layout_editor_absoluteY="26dp">
+
+            <ImageView
+
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="7dp"
+                android:src="@drawable/search_gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="65dp"
+                android:layout_marginTop="13dp"
+                android:text="查詢"
+                android:textColor="@color/gray"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+
+        >
+    </LinearLayout>
 
 
-
-    <!--底部-->
+    <!--底部
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:background="#8fb1df"
+
         >
     </RelativeLayout>
-
+    -->
 </LinearLayout>
 
 

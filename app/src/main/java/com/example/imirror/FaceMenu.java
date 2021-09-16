@@ -18,6 +18,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -25,9 +26,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.imirror.cameraActivity.TakePicActivity;
+import com.example.imirror.other.LoadingUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,23 +43,46 @@ public class FaceMenu extends AppCompatActivity {
     public static final int PermissionCode = 1000; //權限代碼
     public static final int GetPhotoCode = 1001;   //照片代碼
     private Activity activity;
-    private ImageButton Btn1, Btn2, Btn3, Back;
+    private ImageButton Btn1, Back;
+    private RelativeLayout Btn2, Btn3;
     String imageFilePath = "";
     private boolean isCameraPermission = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_face_menu);
         activity = this;
+
+
+
+        setContentView(R.layout.activity_face_menu);
+        //timer.start(); //計時開始
         clicklisten();
+
     }
+
+    // 倒數計時器
+    private CountDownTimer timer = new CountDownTimer(10000, 1000) {
+        @Override
+        public void onTick(long millisUntilFinished) {
+            //textView.setText((millisUntilFinished / 1000) + "秒后可重发");
+            //Log.d("cindy", "動畫中"+(millisUntilFinished / 1000));
+        }
+        @Override
+        public void onFinish() {
+            //textView.setEnabled(true);
+            //textView.setText("获取验证码");
+            LoadingUtils.closeLoading();//關閉動畫
+            Log.d("cindy", "動畫結束");
+        }
+    };
 
     private void clicklisten() {
         Intent intent = new Intent();
         Btn1 = (ImageButton) findViewById(R.id.btn1_1);
-        Btn2 = (ImageButton) findViewById(R.id.btn1_2);
-        Btn3 = (ImageButton) findViewById(R.id.btn1_3);
+        Btn2 = (RelativeLayout) findViewById(R.id.btn1_2);
+        Btn3 = (RelativeLayout) findViewById(R.id.btn1_3);
         Back = (ImageButton) findViewById(R.id.back1);
 
         //健檢(開啟相機) or 打開預約 or 打開查詢
@@ -96,8 +122,7 @@ public class FaceMenu extends AppCompatActivity {
                 isCameraPermission = true;
                 //Toast.makeText(this, "感謝賜予權限！", Toast.LENGTH_SHORT).show();
                 Log.d("cindy", "onRequestPermissionsResult的成功授權");
-                openCamera();
-
+                openCamera(); //開啟相機
             }
             else { //拒絕
                 isCameraPermission = false;
