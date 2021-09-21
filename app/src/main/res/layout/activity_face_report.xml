@@ -16,7 +16,7 @@
         android:layout_height="25dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
-        android:background="@mipmap/ic_baseline_arrow_back_24" />
+        android:background="@drawable/ic_baseline_arrow_back_24" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/pic1"
@@ -51,6 +51,12 @@
             android:layout_marginLeft="13dp"
             android:layout_marginTop="28dp"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="聯絡我們合作的醫院"
+            android:textSize="16sp"
+            app:backgroundTint="#00BCD4" />
         <TextView
             android:id="@+id/textView1"
             android:layout_width="match_parent"
@@ -61,7 +67,6 @@
             android:text="健檢結果"
             android:textColor="@color/black"
             android:textSize="25sp" />
-
         <TextView
             android:id="@+id/textView2"
             android:layout_width="280dp"
@@ -71,7 +76,6 @@
             android:lineSpacingExtra="7dp"
             android:text="．眼白呈現黃色，表示肝臟、膽囊出現了異狀;眼部浮腫，則可能為腎臟功能出現異常。"
             android:textSize="18sp" />
-
         <TextView
             android:id="@+id/textView3"
             android:layout_width="280dp"
@@ -92,7 +96,6 @@
             android:text="飲食建議"
             android:textColor="@color/black"
             android:textSize="25sp" />
-
         <TextView
             android:id="@+id/textView77"
             android:layout_width="280dp"
@@ -115,7 +118,6 @@
             android:text="生活習慣"
             android:textColor="@color/black"
             android:textSize="25sp" />
-
         <TextView
             android:id="@+id/textView72"
             android:layout_width="280dp"
@@ -145,7 +147,6 @@
             android:layout_marginLeft="18dp"
             android:layout_marginBottom="30dp"
             android:orientation="horizontal">
-
             <ImageView
                 android:id="@+id/pic2"
                 android:layout_width="120dp"
@@ -153,7 +154,6 @@
                 android:scaleType="fitStart"
                 android:layout_marginRight="5dp"
                 android:src="@drawable/thing1" />
-
             <ImageView
                 android:id="@+id/pic3"
                 android:layout_width="120dp"

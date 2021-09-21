@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "18120059292",
+    "project_id": "imirror-9d441",
+    "storage_bucket": "imirror-9d441.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18120059292:android:24cf3e51c07bc22aea8059",
+        "android_client_info": {
+          "package_name": "com.example.imirror"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18120059292-bnqrrf955pkhfi72o5tl7qjv9kn42opf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlDe2-mBSPyIHO4VboUkkHRmB0C0Mssmk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18120059292-bnqrrf955pkhfi72o5tl7qjv9kn42opf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

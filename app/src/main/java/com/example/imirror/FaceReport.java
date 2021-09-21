@@ -22,6 +22,7 @@ import com.example.imirror.classifier.TensorFlowImageClassifier;
 import com.example.imirror.other.LoadingUtils;
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.RadarData;
 import com.github.mikephil.charting.data.RadarDataSet;
 import com.github.mikephil.charting.data.RadarEntry;
@@ -80,14 +81,14 @@ public class FaceReport extends AppCompatActivity {
     //測試
     private Executor executor = Executors.newSingleThreadExecutor();
     private Classifier classifier;
-    private static final String MODEL_PATH = "model.tflite";
-    private static final String LABEL_PATH = "face_dict.txt";
+    private static final String MODEL_PATH = "plant_model.tflite";
+    private static final String LABEL_PATH = "plant_labels.txt";
     private static final int INPUT_SIZE = 150;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        LoadingUtils.showDialogForLoading(this,"Loading...");//啟動動畫
+        //LoadingUtils.showDialogForLoading(this,"Loading...");//啟動動畫
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_face_report);
 
@@ -112,7 +113,7 @@ public class FaceReport extends AppCompatActivity {
             e.printStackTrace();
         }
         classfication();
-        LoadingUtils.closeLoading();//關閉動畫
+        //LoadingUtils.closeLoading();//關閉動畫
     }
 
 
@@ -141,7 +142,7 @@ public class FaceReport extends AppCompatActivity {
         ByteBuffer byteBuffer = convertBitmapToByteBuffer(bitmap,imageShape[0],imageShape[1],imageShape[3]);
 
         // Run inference
-        tflite.run(byteBuffer,
+        tflite.run(inputImageBuffer.getBuffer(),
                 outputProbabilityBuffer.getBuffer().rewind());
         show_result(); //顯示學習結果
     }
@@ -252,7 +253,6 @@ public class FaceReport extends AppCompatActivity {
     /* 雷達圖 */
     private void Radarimage() {
         RadarChart radarChart = findViewById(R.id.radarChart);
-
         ArrayList<RadarEntry> radarArray = new ArrayList<>();
         radarArray .add(new RadarEntry(30));
         radarArray .add(new RadarEntry(24));
@@ -260,23 +260,28 @@ public class FaceReport extends AppCompatActivity {
         radarArray .add(new RadarEntry(20));
         radarArray .add(new RadarEntry(12));
 
-        RadarDataSet radarDateSet = new RadarDataSet(radarArray, "分析結果");
-        radarDateSet.setColor(Color.rgb(168,218,175)); //外框顏色
-        radarDateSet.setDrawFilled(true); //填充
-        radarDateSet.setFillColor(Color.argb(127,168,218,175)); //內部填充
-        radarDateSet.setLineWidth(2f); //框線粗細
-        //radarDateSet.setValueTextColor(Color.RED);
-        //radarDateSet.setValueTextSize(14f);
+        RadarDataSet radarDataSet = new RadarDataSet(radarArray, "分析結果");
+        radarDataSet.setColor(Color.rgb(168,218,175)); //外框顏色
+        radarDataSet.setDrawFilled(true);  //填充
+        radarDataSet.setFillColor(Color.argb(127,168,218,175)); //內部填充
+        radarDataSet.setLineWidth(2f);     //框線粗細
+        radarDataSet.setDrawValues(true);  //每個點的數字(通常跟yAxis.setDrawLabels擇一)
+        radarDataSet.setValueTextSize(14); //每個點的數字Size
 
         RadarData radarData = new RadarData();
-        radarData .addDataSet(radarDateSet);
+        radarData .addDataSet(radarDataSet);
 
         String[] labels = {"心","肝","腎","肺","脾"};
-
         XAxis xAxis = radarChart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
         xAxis.setTextSize(20);
+        YAxis yAxis = radarChart.getYAxis();
+        yAxis.setDrawLabels(false);//y軸的數字(0,20,40,60,80,100)
+        yAxis.setAxisMinimum(0);   //最小值
+        yAxis.setAxisMaximum(80);  //最大值
 
+        radarChart.getDescription().setEnabled(false);
+        radarChart.getLegend().setEnabled(false);
         radarChart.setData(radarData);
     }
 
