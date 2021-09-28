@@ -30,7 +30,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.imirror.cameraActivity.TakePicActivity;
-import com.example.imirror.other.LoadingUtils;
+import com.example.imirror.videoActivity.VideoList;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,8 +43,6 @@ public class FaceMenu extends AppCompatActivity {
     public static final int PermissionCode = 1000; //權限代碼
     public static final int GetPhotoCode = 1001;   //照片代碼
     private Activity activity;
-    private ImageButton Btn1, Back;
-    private RelativeLayout Btn2, Btn3;
     String imageFilePath = "";
     private boolean isCameraPermission = false;
 
@@ -55,63 +53,33 @@ public class FaceMenu extends AppCompatActivity {
         activity = this;
 
 
-
         setContentView(R.layout.activity_face_menu);
-        //timer.start(); //計時開始
-        clicklisten();
+        clickListen();
 
     }
 
-    // 倒數計時器
-    private CountDownTimer timer = new CountDownTimer(10000, 1000) {
-        @Override
-        public void onTick(long millisUntilFinished) {
-            //textView.setText((millisUntilFinished / 1000) + "秒后可重发");
-            //Log.d("cindy", "動畫中"+(millisUntilFinished / 1000));
-        }
-        @Override
-        public void onFinish() {
-            //textView.setEnabled(true);
-            //textView.setText("获取验证码");
-            LoadingUtils.closeLoading();//關閉動畫
-            Log.d("cindy", "動畫結束");
-        }
-    };
+    private void clickListen() {
+        ImageButton Btn1 = findViewById(R.id.btn1_1); //開啟相機(健檢)
+        RelativeLayout Btn2 = findViewById(R.id.btn1_2); //預約
+        RelativeLayout Btn3 = findViewById(R.id.btn1_3); //查詢
+        RelativeLayout Btn4 = findViewById(R.id.btn1_4); //進入診間
+        ImageButton Back = findViewById(R.id.back1);
 
-    private void clicklisten() {
         Intent intent = new Intent();
-        Btn1 = (ImageButton) findViewById(R.id.btn1_1);
-        Btn2 = (RelativeLayout) findViewById(R.id.btn1_2);
-        Btn3 = (RelativeLayout) findViewById(R.id.btn1_3);
-        Back = (ImageButton) findViewById(R.id.back1);
-
-        //健檢(開啟相機) or 打開預約 or 打開查詢
-        Btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openCamera();
-            }
+        Btn1.setOnClickListener(view -> openCamera());
+        Btn2.setOnClickListener(view -> {
+            intent.setClass(FaceMenu.this, MedicalReserve.class);
+            startActivity(intent);
         });
-        Btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent.setClass(FaceMenu.this, MedicalReserve.class);
-                startActivity(intent);
-            }
+        Btn3.setOnClickListener(view -> {
+            intent.setClass(FaceMenu.this, MedicalReserveQuery.class);
+            startActivity(intent);
         });
-        Btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent.setClass(FaceMenu.this, MedicalReserveQuery.class);
-                startActivity(intent);
-            }
+        Btn4.setOnClickListener(view -> {
+            intent.setClass(FaceMenu.this, VideoList.class);
+            startActivity(intent);
         });
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        Back.setOnClickListener(view -> onBackPressed());
     }
 
 
@@ -121,7 +89,7 @@ public class FaceMenu extends AppCompatActivity {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 isCameraPermission = true;
                 //Toast.makeText(this, "感謝賜予權限！", Toast.LENGTH_SHORT).show();
-                Log.d("cindy", "onRequestPermissionsResult的成功授權");
+                //Log.d("cindy", "onRequestPermissionsResult的成功授權");
                 openCamera(); //開啟相機
             }
             else { //拒絕
@@ -156,7 +124,7 @@ public class FaceMenu extends AppCompatActivity {
             try {
                 photoFile = createImageFile();
             } catch (IOException e) {
-                Log.d("checkpoint", "error for createImageFile 創建路徑失敗");
+                //Log.d("checkpoint", "error for createImageFile 創建路徑失敗");
             }
             //成功創建路徑的話
             if (photoFile != null) {

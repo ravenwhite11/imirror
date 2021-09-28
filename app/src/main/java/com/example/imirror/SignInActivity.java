@@ -11,19 +11,14 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.imirror.utilities.Constants;
-import com.example.imirror.utilities.PreferenceManager;
+import com.example.imirror.firebase.Constants;
+import com.example.imirror.firebase.PreferenceManager;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.HashMap;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -82,6 +77,7 @@ public class SignInActivity extends AppCompatActivity {
                         if ( task.isSuccessful() && task.getResult()!=null && task.getResult().getDocuments().size()>0 ){
                             DocumentSnapshot documentSnapshot = task.getResult().getDocuments().get(0);
                             preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN, true);
+                            preferenceManager.putString(Constants.KEY_USER_ID, documentSnapshot.getId());
                             preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME));
                             preferenceManager.putString(Constants.KEY_EMAIL, documentSnapshot.getString(Constants.KEY_EMAIL));
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);

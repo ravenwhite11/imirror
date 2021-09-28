@@ -10,16 +10,17 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.imirror.FaceReport;
+import com.example.imirror.LoadingDialog;
 import com.example.imirror.R;
 import com.example.imirror.cameraActivity.CameraSurfaceView;
 
 public class TakePicActivity extends AppCompatActivity {
 
-    private Button button;
     private CameraSurfaceView mCameraSurfaceView;
 
     private Activity activity;
     String filePath;
+    LoadingDialog loadingDialog = new LoadingDialog(TakePicActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +29,17 @@ public class TakePicActivity extends AppCompatActivity {
         //requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         activity = this;
-        mCameraSurfaceView = (CameraSurfaceView) findViewById(R.id.cameraSurfaceView);
-        button = (Button) findViewById(R.id.takePic);
+        mCameraSurfaceView = findViewById(R.id.cameraSurfaceView);
+        Button btn = findViewById(R.id.takePic);
 
         getBundleData();
 
-        button.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCameraSurfaceView.takePicture(activity, filePath);
 
+                mCameraSurfaceView.takePicture(activity, filePath);
+                loadingDialog.startLoadingDialog();
             }
         });
 
@@ -52,5 +54,9 @@ public class TakePicActivity extends AppCompatActivity {
         //Log.d("cindy", "驗證 filePath " + filePath);
     }
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        loadingDialog.dismissDialog();
+    }
 }

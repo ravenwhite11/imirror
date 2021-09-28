@@ -1,74 +1,121 @@
 package com.example.imirror;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.Manifest;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.github.ybq.android.spinkit.SpinKitView;
-import com.github.ybq.android.spinkit.sprite.Sprite;
-import com.github.ybq.android.spinkit.style.DoubleBounce;
+import com.example.imirror.firebase.Constants;
+import com.example.imirror.firebase.PreferenceManager;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.button.MaterialButton;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.util.HashMap;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton Btn1 ,Btn5;
     private long firstPressedTime;
-    Intent intent = new Intent();
+    private PreferenceManager preferenceManager;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        init();
+        clickListener();
+        setTextForWelcome();
 
-
-    }
-
-    private void init(){
-        Btn1 = (ImageButton) findViewById(R.id.btn1_Face);
-        Btn5 = (ImageButton) findViewById(R.id.btn5);
-
-        /*監聽按鈕被觸發*/
-        Btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                intent.setClass(MainActivity.this, FaceMenu.class);
-                startActivity(intent);
-            }
-        });
-        Btn5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                previewCamera();
+        //獲取Token
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
+            if ( task.isSuccessful() && task.getResult()!=null ) {
+                sendFCMTokenDatabase(task.getResult());
             }
         });
 
     }
 
+    /* 設置文字 */
+    private void setTextForWelcome() {
+        preferenceManager = new PreferenceManager(getApplicationContext());
+        TextView textName = findViewById(R.id.textTitle);
+        textName.setText(String.format(
+                "%s %s",
+                "HI~",
+                preferenceManager.getString(Constants.KEY_NAME)
+        ));
+    }
+    /* 把使用者的Token放到資料庫裡 */
+    private void sendFCMTokenDatabase(String token) {
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        DocumentReference documentReference =
+                database.collection(Constants.KEY_COLLECTION_USERS).document(
+                        preferenceManager.getString(Constants.KEY_USER_ID)
+                );
+        documentReference.update(Constants.KEY_FCM_TOKEN, token)
+                .addOnSuccessListener(aVoid -> {
+                    //Toast.makeText(MainActivity.this, "Token更新", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(MainActivity.this, "無法給予Token"+e.getMessage(), Toast.LENGTH_SHORT).show()
+                );
+    }
 
-    private void loading() {
-
-        //View loadView = (FrameLayout) findViewById(R.id.spin_kit);
-        //loadView.setVisibility(View.GONE);
-        //Sprite doubleBounce = new DoubleBounce();
-        //SpinKitView spinKitView = (SpinKitView) findViewById(R.id.spin_kit);
-        //spinKitView.setMinimumWidth(10);  //寬高
-        //spinKitView.setMinimumHeight(10);
+    /* 設置登出 */
+    private void signOut(){
+        Toast.makeText(this, "Signing Out...", Toast.LENGTH_SHORT).show();
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        DocumentReference documentReference =
+                database.collection(Constants.KEY_COLLECTION_USERS).document(
+                        preferenceManager.getString(Constants.KEY_USER_ID)
+                );
+        HashMap<String, Object> updates = new HashMap<>();
+        updates.put(Constants.KEY_FCM_TOKEN, FieldValue.delete()); //應該是刪除Token
+        documentReference.update(updates)
+                .addOnSuccessListener(aVoid -> {
+                    preferenceManager.clearPreferences();
+                    startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+                    finish();
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(MainActivity.this, "無法給予Token"+e.getMessage(), Toast.LENGTH_SHORT).show()
+                );
 
     }
 
-    //幹嘛創這個//
-    private void previewCamera() {
+    /*監聽按鈕被觸發*/
+    private void clickListener(){
+        ImageButton Btn1 = findViewById(R.id.btn1_Face);
+        ImageButton Btn2 = findViewById(R.id.btn2);
+        MaterialButton BtnSignOut = findViewById(R.id.buttonSignOut);
+
+        intent = new Intent();
+        Btn1.setOnClickListener(view -> {
+            intent.setClass(MainActivity.this, FaceMenu.class);
+            startActivity(intent);
+        });
+
+        // 設置Loading動畫
+        LoadingDialog loadingDialog = new LoadingDialog(MainActivity.this);
+        Btn2.setOnClickListener(view -> {
+                loadingDialog.startLoadingDialog();
+                Handler handler = new Handler();
+                handler.postDelayed(() -> loadingDialog.dismissDialog(),5000);
+        });
+        BtnSignOut.setOnClickListener(view -> signOut());
     }
 
 

@@ -1,25 +1,22 @@
 package com.example.imirror;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
-import android.util.Log;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.imirror.cameraActivity.TakePicActivity;
 import com.example.imirror.classifier.Classifier;
-import com.example.imirror.classifier.TensorFlowImageClassifier;
-import com.example.imirror.other.LoadingUtils;
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -57,10 +54,6 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class FaceReport extends AppCompatActivity {
-
-    private ImageView mShowImage;
-    private TextView mTextView;
-    private ImageButton Back;
     private List<String> labels;
     private Bitmap bitmap, bitmap2;
 
@@ -85,18 +78,30 @@ public class FaceReport extends AppCompatActivity {
     private static final String LABEL_PATH = "plant_labels.txt";
     private static final int INPUT_SIZE = 150;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //LoadingUtils.showDialogForLoading(this,"Loading...");//啟動動畫
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_face_report);
 
-        mShowImage = (ImageView) findViewById(R.id.pic1);
-        mTextView = (TextView) findViewById(R.id.textView2);
-        back_clicklisten();
-        Radarimage();
 
+        backClickListen();
+        setRadarImage();
+        getFilepath();
+
+
+        try{
+            tflite = new Interpreter(loadmodelfile(this));
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        classification();
+
+
+    }
+
+
+
+    private void getFilepath() {
         Bundle bundle = getIntent().getExtras();
         String filePath = bundle.getString("url");
 
@@ -106,19 +111,11 @@ public class FaceReport extends AppCompatActivity {
             bitmap = getBitmapFromURL(photoUri); // 從上頁取得Uri並轉成Bitmap格式
         }
 
-
-        try{
-            tflite = new Interpreter(loadmodelfile(this));
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-        classfication();
-        //LoadingUtils.closeLoading();//關閉動畫
     }
 
 
     /* 分析大師== */
-    private void classfication() {
+    private void classification() {
         int imageTensorIndex = 0;
         int[] imageShape = tflite.getInputTensor(imageTensorIndex).shape(); // {1, 4, 4, 512}
         imageSizeY = imageShape[1]; // height
@@ -203,11 +200,14 @@ public class FaceReport extends AppCompatActivity {
 
     /** 讀取Lable文字檔 並 顯示結果 **/
     private void show_result(){
+        TextView mTextView = findViewById(R.id.textView2);
+
         try{
             labels = FileUtil.loadLabels(this,LABEL_PATH);
         }catch (Exception e){
             e.printStackTrace();
         }
+
         Map<String, Float> labeledProbability =
                 new TensorLabel(labels, probabilityProcessor.process(outputProbabilityBuffer)).getMapWithFloatValue();
         //Log.d("cindy", "labeledProbability.values: "+labeledProbability.values());//應該是機率
@@ -218,7 +218,6 @@ public class FaceReport extends AppCompatActivity {
             //Log.d("cindy", "maxValueInMap: "+maxValueInMap);//最大值機率
             //Log.d("cindy", "entry.getValue: "+entry.getValue());//各
             //Log.d("cindy", "entry.getKey: "+entry.getKey());//各物品
-
             if ( entry.getValue() == maxValueInMap ) {
                 //設定出現的文字
                 mTextView.setText(entry.getKey());
@@ -229,6 +228,7 @@ public class FaceReport extends AppCompatActivity {
 
     /* 放置圖片於layout */
     private void setPic(String mCurrentPhotoPath) {
+        ImageView mShowImage = findViewById(R.id.pic1);
         int targetW = 200;
         int targetH = 200;
 
@@ -251,7 +251,7 @@ public class FaceReport extends AppCompatActivity {
     }
 
     /* 雷達圖 */
-    private void Radarimage() {
+    private void setRadarImage() {
         RadarChart radarChart = findViewById(R.id.radarChart);
         ArrayList<RadarEntry> radarArray = new ArrayList<>();
         radarArray .add(new RadarEntry(30));
@@ -284,18 +284,11 @@ public class FaceReport extends AppCompatActivity {
         radarChart.getLegend().setEnabled(false);
         radarChart.setData(radarData);
     }
-
-    private void back_clicklisten() {
-        Intent intent = new Intent();
-        Back = (ImageButton) findViewById(R.id.back_facereport);
-        //返回鍵設置
-        Back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //intent.setClass(FaceReport.this, FaceMenu.class);
-                //startActivity(intent);
-                onBackPressed();
-            }
+    /* 返回鍵設置 */
+    private void backClickListen() {
+        ImageButton Back = findViewById(R.id.back_facereport);
+        Back.setOnClickListener(view -> {
+            onBackPressed();
         });
     }
 

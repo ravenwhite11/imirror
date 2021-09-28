@@ -64,7 +64,6 @@
             android:textSize="25sp"
             android:paddingTop="0dp"
             />
-
         <ImageButton
             android:id="@+id/btn1_1"
             android:layout_width="170dp"
@@ -73,8 +72,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="30dp"
             android:background="@drawable/button_camera"
-            android:src="@drawable/camera_big"
-            android:text="我是圆形按钮" />
+            android:src="@drawable/camera_big"/>
 
     </LinearLayout>
 
@@ -88,9 +86,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="遠距診斷"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:textStyle="bold"
-
             />
     </LinearLayout>
 
@@ -110,15 +107,12 @@
             android:orientation="horizontal"
             tools:layout_editor_absoluteX="9dp"
             tools:layout_editor_absoluteY="26dp">
-
             <ImageView
-
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="13dp"
                 android:layout_marginTop="7dp"
                 android:src="@drawable/reserve_gray" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -141,13 +135,11 @@
             tools:layout_editor_absoluteY="26dp">
 
             <ImageView
-
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="13dp"
                 android:layout_marginTop="7dp"
                 android:src="@drawable/search_gray" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -158,15 +150,48 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </RelativeLayout>
-
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:layout_weight="0.3"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        >
+        <RelativeLayout
+        android:id="@+id/btn1_4"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_reserve"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="26dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="7dp"
+            android:src="@drawable/opened_door" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="65dp"
+            android:layout_marginTop="13dp"
+            android:text="進入診間"
+            android:textColor="@color/gray"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2">
     </LinearLayout>
 
 

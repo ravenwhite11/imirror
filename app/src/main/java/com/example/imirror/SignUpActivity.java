@@ -10,8 +10,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.imirror.utilities.Constants;
-import com.example.imirror.utilities.PreferenceManager;
+import com.example.imirror.firebase.Constants;
+import com.example.imirror.firebase.PreferenceManager;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
@@ -81,6 +81,7 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
                         //PUSH到資料庫
                         preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN, true);
+                        preferenceManager.putString(Constants.KEY_USER_ID, documentReference.getId());
                         preferenceManager.putString(Constants.KEY_NAME, inputName.getText().toString());
                         preferenceManager.putString(Constants.KEY_EMAIL, inputEmail.getText().toString());
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);

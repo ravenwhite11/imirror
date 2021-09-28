@@ -22,11 +22,42 @@
     <LinearLayout
         android:layout_gravity="top|center"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="?actionBarSize"
         android:orientation="vertical"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
-        android:layout_marginTop="0dp">
+        android:layout_marginTop="0dp"
+        android:paddingStart="@dimen/_35sdp"
+        android:paddingEnd="@dimen/_35sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/_3sdp">
+            <TextView
+                android:id="@+id/textTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/cardview_dark_background"
+                android:text="HI~陳福明"
+                android:textSize="@dimen/_25ssp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonSignOut"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_40sdp"
+                android:includeFontPadding="false"
+                android:text="登出"
+                android:textColor="@color/colorTextIcons"
+                android:textSize="@dimen/_16ssp"
+                android:backgroundTint="@color/colorPrimary"/>
+
+
+        </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,7 +91,7 @@
                 >
                 <!--面相微算智能鏡-->
                 <ImageButton
-                    android:id="@+id/btn2_Detect"
+                    android:id="@+id/btn2"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:background="@drawable/btn2"
