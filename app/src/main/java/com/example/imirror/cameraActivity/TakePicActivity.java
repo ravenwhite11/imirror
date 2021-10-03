@@ -3,16 +3,12 @@ package com.example.imirror.cameraActivity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.imirror.FaceReport;
-import com.example.imirror.LoadingDialog;
+import com.example.imirror.other.LoadingDialog;
 import com.example.imirror.R;
-import com.example.imirror.cameraActivity.CameraSurfaceView;
 
 public class TakePicActivity extends AppCompatActivity {
 

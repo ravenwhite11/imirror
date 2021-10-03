@@ -43,22 +43,21 @@
         android:paddingHorizontal="12dp"
         android:paddingTop="10dp"
         android:layout_marginLeft="24dp">
-
         <com.github.mikephil.charting.charts.RadarChart
             android:id="@+id/radarChart"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_marginLeft="13dp"
             android:layout_marginTop="28dp"/>
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="聯絡我們合作的醫院"
             android:textSize="16sp"
+            android:textColor="@color/black"
             app:backgroundTint="#00BCD4" />
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/textTitle1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -68,26 +67,17 @@
             android:textColor="@color/black"
             android:textSize="25sp" />
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView1"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:lineSpacingExtra="7dp"
-            android:text="．眼白呈現黃色，表示肝臟、膽囊出現了異狀;眼部浮腫，則可能為腎臟功能出現異常。"
-            android:textSize="18sp" />
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="280dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:lineSpacingExtra="7dp"
-            android:text="．鼻子屬脾胃，這個部位長痘痘，多與飲食有關，常見於愛吃高熱量食物，且吃的口味較重。"
+            android:text="．眼白黃色黃色黃色黃色黃色黃色色異常。"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/textTitle2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -97,19 +87,17 @@
             android:textColor="@color/black"
             android:textSize="25sp" />
         <TextView
-            android:id="@+id/textView77"
+            android:id="@+id/textView2"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:lineSpacingExtra="7dp"
-            android:text="．日常食用少量堅果，如15克花生、7.5克榛子或7.5克杏仁，可以使心血管疾病的發病率（心肌梗死、中風及心血管疾病死亡率）降低。
-．蘋果果膠含量豐富，一個中等大小的蘋果所含果膠量達3.5克左右。蘋果含有豐富的鉀，是高血壓患者的好選擇。此外，鉀含量較高的食物還有香蕉、扁豆、西蘭花，都是好選擇。
-"
+            android:text="．日常堅果食堅果堅果堅果堅果少量堅果"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/textView45"
+            android:id="@+id/textTitle3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -119,19 +107,17 @@
             android:textColor="@color/black"
             android:textSize="25sp" />
         <TextView
-            android:id="@+id/textView72"
+            android:id="@+id/textView3"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:lineSpacingExtra="7dp"
-            android:text="．坐推肝經，有利於梳肝理氣，去肝火、改氣色，肝經位置可坐在床上，右腿向前伸直，左腿彎曲平放腿內側朝上，彎曲腿正中間位置就是肝經，可兩腿交換推拿，從大腿根部推向膝蓋。
-．按壓太衝穴，太衝穴以泄為主，能解決肝氣鬱結的問題。太衝穴的位置在腳背上拇指和第二趾向上推，可以推到一個凹陷處，案蝦比其他地方敏感，即為太衝穴。
-"
+            android:text="．坐推推肝推肝經肝推推肝經推肝經肝經經"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textTitle4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

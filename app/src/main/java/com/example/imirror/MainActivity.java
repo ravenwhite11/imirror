@@ -1,21 +1,20 @@
 package com.example.imirror;
 
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
+import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.imirror.faceActivity.FaceMenu;
 import com.example.imirror.firebase.Constants;
 import com.example.imirror.firebase.PreferenceManager;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.example.imirror.other.LoadingDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FieldValue;
@@ -43,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
             if ( task.isSuccessful() && task.getResult()!=null ) {
                 sendFCMTokenDatabase(task.getResult());
+
+            } else{
+                Log.d("cindy", "驗證token:" + task.getResult());
             }
         });
 
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
     /* 把使用者的Token放到資料庫裡 */
     private void sendFCMTokenDatabase(String token) {
+
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         DocumentReference documentReference =
                 database.collection(Constants.KEY_COLLECTION_USERS).document(
@@ -67,11 +70,13 @@ public class MainActivity extends AppCompatActivity {
                 );
         documentReference.update(Constants.KEY_FCM_TOKEN, token)
                 .addOnSuccessListener(aVoid -> {
-                    //Toast.makeText(MainActivity.this, "Token更新", Toast.LENGTH_SHORT).show();
+                    Log.d("cindy", "驗證OnSuccessListener():" );
+                    Toast.makeText(MainActivity.this, "Token更新", Toast.LENGTH_SHORT).show();
                 })
-                .addOnFailureListener(e ->
-                        Toast.makeText(MainActivity.this, "無法給予Token"+e.getMessage(), Toast.LENGTH_SHORT).show()
-                );
+                .addOnFailureListener(e ->{
+                        Log.d("cindy", "驗證FailureListener():" );
+                        Toast.makeText(MainActivity.this, "無法給予Token"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 
     /* 設置登出 */

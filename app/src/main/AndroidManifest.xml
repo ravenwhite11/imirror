@@ -45,11 +45,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MedicalReserveQuery" />
-        <activity android:name=".MedicalReserve" />
-        <activity android:name=".FaceReport" />
+        <activity android:name=".faceActivity.MedicalReserveQuery" />
+        <activity android:name=".faceActivity.MedicalReserve" />
+        <activity android:name=".faceActivity.FaceReport" />
         <activity android:name=".cameraActivity.TakePicActivity" />
-        <activity android:name=".FaceMenu" />
+        <activity android:name=".faceActivity.FaceMenu" />
         <activity android:name=".MainActivity" /> <!-- 設定一個臨時權限 -->
         <provider
             android:name="androidx.core.content.FileProvider"

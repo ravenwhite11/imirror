@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="6"
+        android:layout_weight="10"
         android:text="預約"
         android:textSize="30sp"
         android:textColor="@color/white"
@@ -23,11 +23,11 @@
         />
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="600dp" >
+        android:layout_height="550dp" >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="45"
+            android:layout_weight="40"
             android:orientation="vertical"
             android:paddingHorizontal="12dp"
             android:paddingTop="0dp"
@@ -242,7 +242,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
+        android:layout_weight="10"
         android:layout_alignParentBottom="true">
         <Button
             android:id="@+id/reserve_check"

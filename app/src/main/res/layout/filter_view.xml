@@ -1,6 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <HorizontalScrollView
+        android:id="@+id/filterLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:visibility="gone"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:clickable="true"
+                android:onClick="colorEffectFilter">
+                <ImageView
+                    android:id="@+id/ivEffectNone"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:src="@drawable/ic_reject"
+                    android:layout_centerHorizontal="true" /><!--ic_cancel-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="None"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/ivEffectNone"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/r1Aqua"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:clickable="true"
+                android:onClick="colorEffectFilter">
+                <ImageView
+                    android:id="@+id/ivEffectAqua"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:src="@drawable/ic_accept"
+                    android:layout_centerHorizontal="true" /><!--ic_drop-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aqua"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/ivEffectAqua"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/r1BlackBoard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:clickable="true"
+                android:onClick="colorEffectFilter">
+                <ImageView
+                    android:id="@+id/ivBlackBoard"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:src="@drawable/ic_accept"
+                    android:layout_centerHorizontal="true" /><!--ic_BlackBoard-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Black"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/ivBlackBoard"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/r1Mono"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:clickable="true"
+                android:onClick="colorEffectFilter">
+                <ImageView
+                    android:id="@+id/ivMono"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:src="@drawable/ic_accept"
+                    android:layout_centerHorizontal="true" /><!--ic_filter-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mono"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/ivMono"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/r1Negative"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_10sdp"
+                android:clickable="true"
+                android:onClick="colorEffectFilter">
+                <ImageView
+                    android:id="@+id/ivNegative"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_25sdp"
+                    android:src="@drawable/ic_accept"
+                    android:layout_centerHorizontal="true" /><!--ic_film-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Negative"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/ivNegative"
+                    android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
 
 </LinearLayout>

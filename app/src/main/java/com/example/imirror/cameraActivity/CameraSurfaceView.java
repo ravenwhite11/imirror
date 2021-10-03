@@ -1,6 +1,5 @@
 package com.example.imirror.cameraActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -12,14 +11,12 @@ import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
-import com.example.imirror.FaceReport;
-import com.example.imirror.cameraActivity.CameraTopRectView;
+import com.example.imirror.faceActivity.FaceReport;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -103,7 +100,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        Log.i(TAG, "surfaceDestroyed");
+        //Log.i(TAG, "surfaceDestroyed");
         mCamera.stopPreview();  //停止預覽
         mCamera.release();      //釋放相機資源
         mCamera = null;

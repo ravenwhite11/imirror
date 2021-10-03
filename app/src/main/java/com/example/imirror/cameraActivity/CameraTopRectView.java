@@ -12,13 +12,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.example.imirror.cameraActivity.DisplayUtil;
-
-//import cn.jiazhengye.panda_home.application.BaseApplication;
-//import cn.jiazhengye.panda_home.common.Constant;
-//import cn.jiazhengye.panda_home.utils.DisplayUtil;
-//import cn.jiazhengye.panda_home.utils.LoggerUtil;
-
 class CameraTopRectView extends View {
 
     private int panelWidth;
