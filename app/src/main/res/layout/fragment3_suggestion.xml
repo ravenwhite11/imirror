@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".faceActivity.Fragment3Suggestion"
+    android:id="@+id/fragment3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/pic2"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:scaleType="fitStart"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/thing1" />
+        <ImageView
+            android:id="@+id/pic3"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginLeft="25dp"
+            android:scaleType="fitStart"
+            android:src="@drawable/thing2" />
+        <TextView
+            android:id="@+id/mytext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="你好"/>
+
+    </LinearLayout>
+
+</FrameLayout>

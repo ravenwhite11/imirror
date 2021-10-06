@@ -1,155 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:background="@drawable/bgmain1"
-    >
+    tools:context=".MainActivity">
 
-    <ImageButton
-        android:id="@+id/back_facereport"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/ic_baseline_arrow_back_24" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/pic1"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/me1"
-        app:civ_border_width="3dp"
-        app:civ_border_color="#ffff"/>
-
-
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="80"
-        android:orientation="vertical"
-        android:paddingHorizontal="12dp"
-        android:paddingTop="10dp"
-        android:layout_marginLeft="24dp">
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/layoutHeader"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/colorPrimary"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/_8sdp"
+            android:paddingEnd="@dimen/_8sdp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageBack"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                app:tint="@color/colorTextIcons" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:includeFontPadding="false"
+                android:text="面徵健檢報告書"
+                android:textColor="@color/colorTextIcons"
+                android:textSize="@dimen/_15ssp" />
+        </LinearLayout>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/pic1"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/me1"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="@dimen/_5ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layoutHeader" />
+
         <com.github.mikephil.charting.charts.RadarChart
             android:id="@+id/radarChart"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginLeft="13dp"
-            android:layout_marginTop="28dp"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="聯絡我們合作的醫院"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            app:backgroundTint="#00BCD4" />
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pic1" />
+
         <TextView
             android:id="@+id/textTitle1"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:text="健檢結果"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:layout_marginTop="16dp"
+            android:text="診斷"
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radarChart" />
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="280dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
             android:lineSpacingExtra="7dp"
-            android:text="．眼白黃色黃色黃色黃色黃色黃色色異常。"
-            android:textSize="18sp" />
+            android:text="診斷診斷診斷診斷診斷診斷"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitle1" />
 
         <TextView
             android:id="@+id/textTitle2"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:text="飲食建議"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="280dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
             android:lineSpacingExtra="7dp"
-            android:text="．日常堅果食堅果堅果堅果堅果少量堅果"
-            android:textSize="18sp" />
+            android:text="飲食建議飲食建議飲食建議飲食建議"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitle2" />
 
         <TextView
             android:id="@+id/textTitle3"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:text="生活習慣"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="280dp"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="8dp"
             android:lineSpacingExtra="7dp"
-            android:text="．坐推推肝推肝經肝推推肝經推肝經肝經經"
-            android:textSize="18sp" />
+            android:text="生活習慣生活習慣生活習慣生活習慣"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitle3" />
 
         <TextView
             android:id="@+id/textTitle4"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:text="推薦產品"
-            android:textColor="@color/black"
-            android:textSize="25sp" />
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/layout1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
-            android:layout_marginLeft="18dp"
-            android:layout_marginBottom="30dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitle4">
+
             <ImageView
                 android:id="@+id/pic2"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
+                android:layout_marginRight="@dimen/_20sdp"
                 android:scaleType="fitStart"
-                android:layout_marginRight="5dp"
                 android:src="@drawable/thing1" />
+
             <ImageView
                 android:id="@+id/pic3"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="@dimen/_25sdp"
                 android:scaleType="fitStart"
                 android:src="@drawable/thing2" />
         </LinearLayout>
-    </LinearLayout>
-    </ScrollView>
 
+        <TextView
+            android:id="@+id/textTitle5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="您是否想尋求專業協助?"
+            android:textSize="@dimen/_20ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout1" />
 
-</LinearLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonConnectReserve"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:includeFontPadding="false"
+            android:text="預約看診"
+            android:textColor="@color/colorTextIcons"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitle5"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

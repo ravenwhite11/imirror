@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 );
         documentReference.update(Constants.KEY_FCM_TOKEN, token)
                 .addOnSuccessListener(aVoid -> {
-                    Log.d("cindy", "驗證OnSuccessListener():" );
+                    //Log.d("cindy", "驗證OnSuccessListener():" );
                     Toast.makeText(MainActivity.this, "Token更新", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e ->{

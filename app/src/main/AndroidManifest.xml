@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.imirror">
     <!-- 相機權限 -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <!-- 讀寫權限 -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 讀寫權限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -23,6 +22,7 @@
         android:theme="@style/Theme.Imirror"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
+        <activity android:name=".ShoppingHomeActivity"></activity>
         <activity android:name=".makeupActivity.MakeupActivity" />
         <activity
             android:name=".videoActivity.OutgoingInvitationActivity"

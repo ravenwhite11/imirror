@@ -42,7 +42,8 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'    // ProgressBar
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'// 雷達圖
-    implementation 'de.hdodenhof:circleimageview:3.1.0'      // 圓形白框
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'// 圓形白框
 
     testImplementation 'junit:junit:4.+'
     //測試相關
