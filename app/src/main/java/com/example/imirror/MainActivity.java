@@ -42,9 +42,8 @@ public class MainActivity extends AppCompatActivity {
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
             if ( task.isSuccessful() && task.getResult()!=null ) {
                 sendFCMTokenDatabase(task.getResult());
-
             } else{
-                Log.d("cindy", "驗證token:" + task.getResult());
+                //Log.d("cindy", "驗證token:" + task.getResult());
             }
         });
 
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         documentReference.update(Constants.KEY_FCM_TOKEN, token)
                 .addOnSuccessListener(aVoid -> {
                     //Log.d("cindy", "驗證OnSuccessListener():" );
-                    Toast.makeText(MainActivity.this, "Token更新", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Token更新", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e ->{
                         //Log.d("cindy", "驗證FailureListener():" );

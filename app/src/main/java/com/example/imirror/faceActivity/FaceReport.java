@@ -330,11 +330,11 @@ public class FaceReport extends AppCompatActivity {
         ImageView Back = findViewById(R.id.imageBack);
         Back.setOnClickListener(view -> onBackPressed());
 
-        MaterialButton btn1 = findViewById(R.id.buttonConnectReserve);
+/*        MaterialButton btn1 = findViewById(R.id.buttonConnectReserve);
         btn1.setOnClickListener(view -> {
             intent.setClass(FaceReport.this, MedicalReserve.class);
             startActivity(intent);
-        });
+        });*/
 
         ImageView imageView2 = findViewById(R.id.pic2);
         imageView2.setOnClickListener(view -> {
