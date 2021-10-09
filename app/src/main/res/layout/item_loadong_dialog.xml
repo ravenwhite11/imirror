@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/_30sdp"
-    android:layout_marginLeft="@dimen/_30sdp"
-    android:layout_marginRight="@dimen/_30sdp"
-    android:background="@color/colorDialogBG">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorDialogBG"
+    android:padding="@dimen/_30sdp">
 
     <!--改變顏色app:SpinKit_Color="#FFBDD1"-->
     <com.github.ybq.android.spinkit.SpinKitView
@@ -16,6 +13,7 @@
         style="@style/SpinKitView.CubeGrid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

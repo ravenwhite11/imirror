@@ -23,6 +23,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.imirror.R;
+import com.example.imirror.ShoppingHomeActivity;
 import com.example.imirror.other.LoadingDialog;
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.components.XAxis;
@@ -329,12 +330,23 @@ public class FaceReport extends AppCompatActivity {
         ImageView Back = findViewById(R.id.imageBack);
         Back.setOnClickListener(view -> onBackPressed());
 
-
         MaterialButton btn1 = findViewById(R.id.buttonConnectReserve);
         btn1.setOnClickListener(view -> {
             intent.setClass(FaceReport.this, MedicalReserve.class);
             startActivity(intent);
         });
+
+        ImageView imageView2 = findViewById(R.id.pic2);
+        imageView2.setOnClickListener(view -> {
+            intent.setClass(FaceReport.this, ShoppingHomeActivity.class);
+            startActivity(intent);
+        });
+        ImageView imageView3 = findViewById(R.id.pic3);
+        imageView3.setOnClickListener(view -> {
+            intent.setClass(FaceReport.this, ShoppingHomeActivity.class);
+            startActivity(intent);
+        });
+
     }
     /* 取得圖片連結 */
     private void getFilepath() {

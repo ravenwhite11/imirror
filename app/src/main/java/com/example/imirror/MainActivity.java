@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Token更新", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e ->{
-                        Log.d("cindy", "驗證FailureListener():" );
+                        //Log.d("cindy", "驗證FailureListener():" );
                         Toast.makeText(MainActivity.this, "無法給予Token"+e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
     private void clickListener(){
         ImageButton Btn1 = findViewById(R.id.btn1_Face);
         ImageButton Btn2 = findViewById(R.id.btn2);
+        ImageButton Btn8 = findViewById(R.id.btn8);
         MaterialButton BtnSignOut = findViewById(R.id.buttonSignOut);
 
         intent = new Intent();
@@ -120,6 +121,11 @@ public class MainActivity extends AppCompatActivity {
                 Handler handler = new Handler();
                 handler.postDelayed(() -> loadingDialog.dismissDialog(),5000);
         });
+        Btn8.setOnClickListener(view -> {
+            intent.setClass(MainActivity.this, ShoppingHomeActivity.class);
+            startActivity(intent);
+        });
+
         BtnSignOut.setOnClickListener(view -> signOut());
     }
 
