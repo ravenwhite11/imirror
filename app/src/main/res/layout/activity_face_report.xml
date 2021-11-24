@@ -67,15 +67,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="診斷"
+            android:text="診斷結果"
             android:textSize="@dimen/_20ssp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radarChart" />
+
         <TextView
             android:id="@+id/textView1"
-            android:layout_width="300dp"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:lineSpacingExtra="7dp"
@@ -99,7 +100,7 @@
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="300dp"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:lineSpacingExtra="7dp"
@@ -120,9 +121,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="300dp"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:lineSpacingExtra="7dp"
@@ -172,6 +174,30 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="資料來源：《黃帝內經》"
+            android:textColor="#FBA29C"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout1" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="以上資料僅供參考"
+            android:textColor="#DADADA"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+        <TextView
             android:id="@+id/textTitle5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -181,12 +207,12 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout1" />
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonConnectReserve"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_70sdp"
+            android:layout_height="@dimen/_80sdp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@color/colorPrimary"
             android:includeFontPadding="false"
@@ -194,6 +220,6 @@
             android:textColor="@color/colorTextIcons"
             android:textSize="@dimen/_13ssp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textTitle5"/>
+            app:layout_constraintTop_toBottomOf="@+id/textTitle5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

@@ -152,59 +152,112 @@ public class FaceReport extends AppCompatActivity {
             case 0:{
                 textView1.setText("您的心臟可能有潛在風險！\n" +
                         "症狀：面部浮腫\n" +
-                        "診斷：有心臟病問題，此時臉部的肌肉過於鬆弛且按壓後會留下壓痕，皮膚回彈性很差。");
-                textView2.setText("\u279C\t日常食用少量堅果，如15g花生、7.5g榛子、7.5g杏仁等，可使心血管疾病（心肌梗塞、中風等）之發病率降低。\n" +
-                        "\u279C\t蘋果果膠含量豐富，一個中等大小的蘋果所含果膠量達3.5g。蘋果含有豐富的鉀，是高血壓患者的好選擇。此外，鉀含量較高的食物還有香蕉、扁豆、西蘭花，都是好選擇。");
-                textView3.setText("\u279C\t在增加心血管病風險的生活方式和危險因素中，體力活動明顯不足成為其中一個重要因素。可選擇快步走、（30分鍾內走3公里等）簡單又便捷的運動方法來降低風險。\n" +
-                        "\u279C\t充分睡眠可減緩心臟疾病風險，不過睡覺時間太長或太短會皆不洽當，建議合適的睡眠時間為：6-7小時");
+                        "診斷：臉部的肌肉過於鬆弛，且按壓後會留下壓痕，皮膚回彈性很差\n" +
+                        "症狀：唇色偏紫青\n" +
+                        "診斷：血液循環功能異常\n" +
+                        "症狀：眼瞼黃色瘤\n" +
+                        "診斷：體內脂質代謝異常，血脂過高會提高患心臟病風險。");
+                textView2.setText("\u279C\t宜食少許堅果，如15g花生、7.5g榛果、7.5g杏仁等，可使心血管疾病（心肌梗塞、中風等）之發病率降低。\n" +
+                        "\u279C\t宜食蘋果，內果膠含量豐富。\n" +
+                        "\u279C\t宜食有較高鉀含量之食，如香蕉、扁豆、西蘭花等。\n" +
+                        "\u279C\t宜喝麥片粥，多攝入全穀類食物，如糙米、穀物、膳食纖維、維生素B1，有助於控製膽固醇的升高，保護心臟。\n" +
+                        "\u279C\t不宜飽和脂肪高之食物，如奶酪、酸奶、肥肉、奶油、豬油、糕點、餅乾以及椰油。\n" +
+                        "\u279C\t不宜高鈉。成人一日鹽攝取量不超過6g。");
+                textView3.setText("\u279C\t宜多進行增健體力之活動，活動踝關節有促進全身血液循環之效，增加回心血量。如健走、快步走、登山步行等。\n" +
+                        "\u279C\t宜保持充足睡眠，可減緩心臟疾病風險；建議合適的睡眠時間為6-7小時，時間太長或太短會皆不洽當。");
                 break;
             }
             case 1:{
-                textView1.setText("您的肝臟可能有潛在風險！"+"\n"+
-                        "症狀：臉色發黑\n" +
-                        "診斷：肝臟受損，排毒與儲存鐵質的功能無法正常發揮，鐵質流入血液造成臉色發黑。");
-                textView2.setText("\u279C\t蘆筍、韭菜、蒜頭、芝麻，能有效幫助代謝、排毒，幫助護肝。\n" +
-                        "\u279C\t花茶能舒緩緊繃的情緒，大多有清熱、利尿、解毒之功效，與肝有益之花茶：玫瑰花茶、菊花茶、洛神花茶、茉莉花茶。");
-                textView3.setText("\u279C\t坐推肝經，有利於梳肝理氣，去肝火、改氣色，肝經位置可坐在床上，右腿向前伸直，左腿彎曲平放腿內側朝上，彎曲腿正中間位置就是肝經，可兩腿交換推拿，從大腿根部推向膝蓋。");
+                textView1.setText("您的腎臟可能有潛在風險！\n" +
+                        "症狀：鼻翼發紅。\n" +
+                        "診斷：鼻頭髮暗、枯燥脫皮，身體已經消耗過多津液和正氣，應養腎。\n" +
+                        "症狀：眼之下微發黑。\n" +
+                        "診斷：腎虛，水代謝功能異常。\n" +
+                        "症狀：兩頰發黑。\n" +
+                        "診斷：腰膝酸軟、性功能減退。");
+                textView2.setText("\u279C\t宜多食黑芝麻、桑葚、黑豆、何首烏、黑木耳、黑米等。五色食療，黑色入腎，利於補腎。\n" +
+                        "\u279C\t「春夏養陽，秋冬養陰。」春季是氣候由寒轉熱時節，適合培養「腎陽」。於春季喝大黃蓮藕茶使體內尿毒指數降低。\n" +
+                        "\u279C\t宜食高麗菜，其含有豐富維生素C、維生素E、胡蘿蔔素，利於清理體內自由基\n。" +
+                        "\u279C\t宜多沙苑子、腰果、豬腰子，從食物的「樣貌」中能得到食補之啟示，其外型像人體的腎，可食用養腎。\n" +
+                        "\u279C\t忌過多攝取蛋白質及電解質，分解其產生之物質對腎之代謝功能造成負擔大\n。" +
+                        "\u279C\t忌高油、油脂，勿使脂肪囤積於體內。");
+                textView3.setText("\u279C\t「慾不可縱，縱則精竭，竭則真散」房勞過度，精氣外洩，易耗傷身體，宜量力而行，勞作有度，房事有節。\n" +
+                        "\u279C\t宜補充水份，水於健康至關重要，亦能協助腎臟之運作。每日所需之水量因人而異，大方向指標為尿液色澤呈稻草色。\n" +
+                        "\u279C\t宜維持規律運動，每週散步、游泳或騎自行車來保持體重。超重將致血壓升高，對腎造成額外負擔。\n" +
+                        "\u279C\t宜少量多餐以利維持正常血糖，腎臟將血液中之營養物質過濾回體內、並清除廢物，保持血糖於正常範圍內有助於維持腎臟及整體健康。\n" +
+                        "\u279C\t忌睡眠不足、過度疲累，充足的睡眠對於氣血的生化、腎精之保養起著重要作用。\n" +
+                        "\u279C\t忌運動過身體最高承受之量，易發生呼吸性鹼中毒，致肌肉勞損。\n" +
+                        "\u279C\t忌抽菸，尼古丁不利於血壓控制。");
                 break;
             }
             case 2:{
-                textView1.setText("您的脾臟可能有潛在風險！"+"\n"+
-                        "症狀：鼻翼發紅\n" +
-                        "診斷：鼻腔乾燥、嗅覺失靈、流清鼻涕、鼻子出血，大多是脾胃虛弱所導致。");
-                textView2.setText("\u279C\t脾胃有四怕，怕生、怕冷、怕撐、怕生氣。生冷的食物，如各種冷飲、生的蔬菜水果等，會帶著寒氣進入身體，最容易傷及脾胃。此外，脾胃怕撐，飢一頓、飽一頓對其傷害最大。\n" +
-                        "\u279C\t春天少吃酸，多吃甜味食物，如山藥、香蕉、大棗等，以養脾臟之氣。");
-                textView3.setText("\u279C\t多動動腳趾，相當於按摩脾胃二經。平常上班時可以邊工作邊用腳趾抓地或鞋底，活動腳趾養脾胃。");
+                textView1.setText("您的肝臟可能有潛在風險！\n"+
+                        "症狀：臉色發黑。\n" +
+                        "診斷：排毒與儲存鐵質的功能無法正常發揮，鐵質流入血液造成臉色發黑。\n" +
+                        "症狀：黃疸（眼白泛黃）。\n" +
+                        "診斷：膽管塞住膽汁無法流到腸道，而進到血液循環中造成黃疸，皮膚受刺激而發癢。\n" +
+                        "症狀：左臉頰發紅。\n" +
+                        "診斷：肝火旺盛。");
+                textView2.setText("\u279C\t宜食蘆筍、韭菜、蒜頭、芝麻，有助代謝、排毒。\n" +
+                        "\u279C\t宜食花茶，其有清熱、利尿、解毒之功效，並舒緩緊繃之情緒；利肝之花茶如玫瑰花茶、菊花茶、洛神花茶、茉莉花茶。\n" +
+                        "\u279C\t宜食較酸性之食，如檸檬、山楂、食醋、優酪乳。偏酸之食經肝成鹼性，於人體形成鹼性循環，有助免疫力之提升。\n" +
+                        "\u279C\t宜食綠色食物，如黃瓜、苦瓜、芥菜、海藻。\n" +
+                        "\u279C\t忌辛辣、亂食補品及抗生素。\n" +
+                        "\u279C\t不宜食用過多蛋白之食。\n" +
+                        "\u279C\t不宜酒類、含黃麴毒素之食。");
+                textView3.setText("\u279C\t宜進行坐推肝經，有利於梳肝理氣，去肝火、改氣色；可坐於床上，右腿向前伸直、左腿彎曲平放腿內側朝上，彎曲腿正中間位置即是肝經，可兩腿交換推拿，從大腿根部推向膝蓋。\n" +
+                        "\u279C\t宜按壓太衝穴，其以泄為主，解肝氣鬱結。腳背上拇指和第二趾向上推，可推及一凹陷處，按壓較於其餘地方有感，即為太衝穴之位。\n" +
+                        "\u279C\t宜按壓膻中穴，亦有紓解肝氣鬱結。位置於兩乳頭間之敏感處。於情緒激憤之餘，膻中穴尤為敏感。\n" +
+                        "\u279C\t宜按壓三陰交穴，此穴位為補穴，常按摩能達養肝之效。位於內腳踝上三吋(約四並指)，脛骨內側後方的凹陷處。");
                 break;
+
             }
             case 3:{
                 textView1.setText("您的肺臟可能有潛在風險！");
-                textView1.setText("症狀：兩眉之間長痘、或微發黑\n" +
-                        "診斷：肺部健康時，印堂呈現白裡透紅，若印堂發紅，則說明肝火旺盛，印堂發白，可能囗氣虛或血虛，印堂發青或發黑，則是血瘀的一種情況。");
-                textView2.setText("\u279C\t多吃利於化痰潤肺的白色食物，如：枇杷、蜂蜜、蓮子、百合、杏仁、蓮藕、白芝麻等。\n" +
-                        "\u279C\t番茄、香蕉、蘋果，都能有效抑制肺部機能退化，同時修復受損的肺臟機能。");
-                textView3.setText("\u279C\t養成運動習慣是鍛鍊肺最好的辦法。透過運動促進肺部血液循環、加強肺活量，增加肺部氣泡之彈性。\n" +
-                        "\u279C\t搓揉手掌心的位置，有利肺氣、止咳喘、化痰、健肺，對於治療感冒也有很好的效果");
+                textView1.setText("症狀：面呈憔悴、黯淡無光之狀。\n" +
+                        "診斷：肺主皮毛，其有異狀，毒素隨著肺作用沉積於表皮，易皮膚枯燥、粗糙、暗瘡、粉刺及黑斑。\n" +
+                        "症狀：紅鼻頭。\n" +
+                        "診斷：肺火旺，熱氣往上抵鼻頭。亦有鼻涕、鼻塞、鼻炎等鼻不適症狀。\n" +
+                        "症狀：臉色蒼白。\n" +
+                        "診斷：肺功效異狀之徵兆，易致氣虛、血含氧量不足。\n" +
+                        "症狀：印堂微發黑。\n" +
+                        "診斷：印堂於一般呈白裡透紅之狀；若發紅，則說明肝火旺盛；發白，可能囗氣虛、血虛；發青或發黑，則有血瘀之慮。\n" +
+                        "症狀：右臉頰發紅。\n" +
+                        "診斷：肺火旺盛。");
+                textView2.setText("\u279C\t宜食利於化痰潤肺之白色食物，如：蓮子、百合、杏仁、蓮藕、白芝麻、蜂蜜等。\n" +
+                        "\u279C\t宜食番茄、香蕉、蘋果，抑制肺部機能退化，亦修復受損之肺臟機能。\n" +
+                        "\u279C\t宜於早晚喝丁香葉桂花茶，起潤肺養肺之效。\n" +
+                        "\u279C\t忌高磷、鈉、鉀之刺激性食物，易刺激氣管黏膜會加重咳嗽、氣喘、心悸等症狀，並誘發哮喘。\n" +
+                        "\u279C\t忌食海腥、油膩之品，用油過大易引上火於身。\n" +
+                        "\u279C\t忌食產氣之食，如紅薯、韭菜，對肺氣宣降不利。");
+                textView3.setText("\u279C\t宜有培養運動健身之習慣，促進血液循環、加強肺活量，並增加肺部氣泡之彈性。\n" +
+                        "\u279C\t搓揉手掌心，利肺氣、止咳喘、化痰、健肺。肺氣充足，氣色紅潤、光滑細緻，亦有養顏美容之功效。\n" +
+                        "\u279C\t宜笑口常開，大笑使肺擴張，並使人無自覺地深呼吸，有利呼吸道之清理，亦使呼吸更於通暢。");
                 break;
             }
             case 4:{
                 textView1.setText("您的潛在風險皆偏低！");
                 textView1.setText("症狀：無明顯症狀\n" +
-                        "診斷：您的面容無明顯身體健康之疑慮，恭喜您！！");
-                textView2.setText("\u279C\t繼續保持六大類食物份量攝取，使營養素種類齊全。三餐以全榖為主食提供身體適當的熱量，協助維持血糖，並保護肌肉與內臟器官的組織蛋白質。多選用高纖維食物，能促進腸道的生理健康，還可幫助血糖與血脂的控制。");
-                textView3.setText("\u279C\t繼續維持多活動的生活習慣，每週累積至少150分鐘中等費力身體活動，或是75分鐘的較費力之身體活動。");
+                        "診斷：您的面容無明顯身體健康之疑慮，但還需定期檢視自身健康狀況。");
+                textView2.setText("\u279C\t繼續保持六大類食物份量攝取，使營養素種類齊全。三餐以全榖為主食提供身體適當的熱量，協助維持血糖，並保護肌肉與內臟器官的組織蛋白質。多選用高纖維食物，促進腸道之生理健康，並有助血糖與血脂之控制。");
+                textView3.setText("\u279C\t繼續維持多活動的生活習慣，每週累積至少150分鐘中等費力身體活動，或75分鐘的較費力之身體活動。");
                 break;
             }
             case 5:{
-                textView1.setText("您的腎臟可能有潛在風險！\n" +
+                textView1.setText("您的脾臟可能有潛在風險！\n"+
                         "症狀：鼻翼發紅\n" +
-                        "診斷：鼻頭髮暗、枯燥脫皮，身體已經消耗過多津液和正氣，應養腎。");
-                textView2.setText("\u279C\t多吃芝麻、核桃可以使皮膚白皙、豐潤，有助毛髮生長。\n" +
-                        "\u279C\t紅辣椒中關鍵成分辣椒素有助於分解體內（特別是血液）之垃圾。\n" +
-                        "\u279C\t高麗菜中含有豐富的維生素C、維生素E、胡蘿蔔素等，總計維生素含量比番茄多出3倍。高麗菜有助於清除體內自由基。可多吃點涼拌高麗菜。");
-                textView3.setText("\u279C\t「春夏養陽，秋冬養陰。」春季是氣候由寒轉熱的時節，適合培養「腎陽」，喝大黃蓮藕茶可以降低累積在體內的尿毒指數。將大黃2片及藕粉10克放入杯中，以250毫升熱開水沖泡即可。\n" +
-                        "\u279C\t按五行學說，黑色入腎。許多黑色的食物，如黑芝麻、黑木耳、黑米、黑豆等，也都有補腎的功效，可斟酌食用。");
+                        "診斷：鼻腔乾燥、嗅覺失靈、流清鼻涕、鼻內出血，大多為脾胃虛弱之徵兆。\n" +
+                        "症狀：皮膚黃斑\n" +
+                        "診斷：肝火旺盛，易怒，手腳冰涼。");
+                textView2.setText("\u279C\t宜食甜味之食，如山藥、香蕉、大棗等，以養脾臟之氣。少食酸味之食物。\n" +
+                        "\u279C\t宜於夏食豆類，夏日溼氣重，豆類健脾利濕。\n" +
+                        "\u279C\t脾胃有四怕：怕生、怕冷、怕撐、怕怒。不宜生冷食物，如冷飲、生食蔬菜，其內帶寒氣，如進於身易傷及脾胃。\n" +
+                        "\u279C\t不宜極端飲食，飢一頓、飽一頓傷害最大。");
+                textView3.setText("\u279C\t宜多動腳趾，功效相當於按摩脾胃二經。於久坐之時可邊工作邊用腳趾抓地或鞋底。\n" +
+                        "\u279C\t宜笑口常開，情緒意影響肝之調節功能，進而影響脾胃；不良情緒也亦影響胃液分泌不足、活動力下降。\n" +
+                        "\u279C\t宜於進食時反覆咀嚼，於胃細碎食物益於消化，亦利於腸道。");
                 break;
+
             }
         }
     }
@@ -270,11 +323,12 @@ public class FaceReport extends AppCompatActivity {
     public void setRadarImage(float heart, float kidney, float liver, float lung, float normal, float spleen) {
         RadarChart radarChart = findViewById(R.id.radarChart);
         ArrayList<RadarEntry> radarArray = new ArrayList<>();
+
         radarArray .add(new RadarEntry(heart));
-        radarArray .add(new RadarEntry(kidney));
-        radarArray .add(new RadarEntry(liver));
-        radarArray .add(new RadarEntry(lung));
         radarArray .add(new RadarEntry(spleen));
+        radarArray .add(new RadarEntry(lung));
+        radarArray .add(new RadarEntry(liver));
+        radarArray .add(new RadarEntry(kidney));
 
         RadarDataSet radarDataSet = new RadarDataSet(radarArray, "分析結果");
         radarDataSet.setColor(Color.rgb(168,218,175)); //外框顏色
@@ -282,12 +336,12 @@ public class FaceReport extends AppCompatActivity {
         radarDataSet.setFillColor(Color.argb(127,168,218,175)); //內部填充
         radarDataSet.setLineWidth(2f);     //框線粗細
         radarDataSet.setDrawValues(true);  //每個點的數字(通常跟yAxis.setDrawLabels擇一)
-        radarDataSet.setValueTextSize(14); //每個點的數字Size
+        radarDataSet.setValueTextSize(12); //每個點的數字Size
 
         RadarData radarData = new RadarData();
         radarData .addDataSet(radarDataSet);
 
-        String[] labels = {"心","肝","腎","肺","脾"};
+        String[] labels = {"心","脾","肺","肝","腎"};
         XAxis xAxis = radarChart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
         xAxis.setTextSize(20);
@@ -330,21 +384,23 @@ public class FaceReport extends AppCompatActivity {
         ImageView Back = findViewById(R.id.imageBack);
         Back.setOnClickListener(view -> onBackPressed());
 
-/*        MaterialButton btn1 = findViewById(R.id.buttonConnectReserve);
+        MaterialButton btn1 = findViewById(R.id.buttonConnectReserve);
         btn1.setOnClickListener(view -> {
             intent.setClass(FaceReport.this, MedicalReserve.class);
             startActivity(intent);
-        });*/
+        });
 
         ImageView imageView2 = findViewById(R.id.pic2);
         imageView2.setOnClickListener(view -> {
-            intent.setClass(FaceReport.this, ShoppingHomeActivity.class);
-            startActivity(intent);
+            Uri uri = Uri.parse("https://www.amazon.com/Solaray-Healthy-Dandelion-Artichoke-Peppermint/dp/B00014D9VC");
+            Intent i = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(i);
         });
         ImageView imageView3 = findViewById(R.id.pic3);
         imageView3.setOnClickListener(view -> {
-            intent.setClass(FaceReport.this, ShoppingHomeActivity.class);
-            startActivity(intent);
+            Uri uri = Uri.parse("https://www.amazon.com/dp/B00MJ7VL1O/ref=cm_sw_em_r_mt_dp_P0V56CDWWNNF54ZY6C0X");
+            Intent i = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(i);
         });
 
     }

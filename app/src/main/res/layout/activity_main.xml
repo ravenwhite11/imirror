@@ -20,160 +20,155 @@
         android:scrollbars="none">
 
         <LinearLayout
-            android:layout_gravity="top|center"
             android:layout_width="fill_parent"
             android:layout_height="?actionBarSize"
-            android:orientation="vertical"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="0dp"
+            android:layout_gravity="top|center"
+            android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
-            android:paddingStart="@dimen/_35sdp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/_60sdp"
             android:paddingEnd="@dimen/_35sdp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
+                android:layout_marginBottom="@dimen/_3sdp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:layout_marginBottom="@dimen/_3sdp">
+                android:orientation="horizontal">
+
                 <TextView
                     android:id="@+id/textTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="@color/cardview_dark_background"
                     android:text="HI~陳福明"
-                    android:textSize="@dimen/_20ssp"/>
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="@dimen/_25ssp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/buttonSignOut"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_35sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:backgroundTint="@color/colorPrimary"
                     android:includeFontPadding="false"
-                    android:layout_marginRight="35dp"
                     android:text="登出"
                     android:textColor="@color/colorTextIcons"
-                    android:textSize="@dimen/_12ssp"
-                    android:backgroundTint="@color/colorPrimary"/>
+                    android:textSize="@dimen/_16ssp" />
+            </LinearLayout>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:paddingTop="0dp"
+                android:text="HEALTH"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+            <!--面徵健檢鏡-->
+            <ImageButton
+                android:id="@+id/btn1_Face"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/btn1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="OTHER"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                android:orientation="horizontal">
+                <!--雲端約會-->
+                <ImageButton
+                    android:id="@+id/btn7"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:background="@drawable/btn6" />
+                <!--電商導購-->
+                <ImageButton
+                    android:id="@+id/btn8"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/btn5" />
 
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HEALTH"
-                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:text="PRETTY"
                 android:textSize="18dp"
-                android:paddingTop="0dp"
-                android:layout_marginTop="0dp"/>
-            <!--面徵健檢鏡-->
-            <ImageButton
-                android:id="@+id/btn1_Face"
-                android:layout_width="360dp"
-                android:layout_height="180dp"
-                android:background="@drawable/btn1"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
                 android:layout_marginTop="5dp"
-                />
+                android:orientation="horizontal">
+                <!--美髮彩妝-->
+                <ImageButton
+                    android:id="@+id/btn5"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:background="@drawable/btn7" />
+                <!--配件飾品-->
+                <ImageButton
+                    android:id="@+id/btn6"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/btn8" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:text="FUNNY"
-                android:textStyle="bold"
                 android:textSize="18dp"
-                android:layout_marginTop="20dp"/>
+                android:textStyle="bold" />
+
             <LinearLayout
-                android:layout_gravity="top"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_gravity="top"
                 android:layout_marginTop="5dp"
-                >
+                android:orientation="horizontal">
                 <!--面相微算智能鏡-->
                 <ImageButton
                     android:id="@+id/btn2"
-                    android:layout_width="165dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/btn2"
-                    />
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:background="@drawable/btn2" />
                 <!--刷牙遊戲-->
                 <ImageButton
                     android:id="@+id/btn3_Makeup"
-                    android:layout_width="165dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/btn3"
-                    android:layout_marginLeft="30dp"/>
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/btn3" />
             </LinearLayout>
             <!--居家運動鏡-->
             <ImageButton
                 android:id="@+id/btn4_"
-                android:layout_width="165dp"
-                android:layout_height="165dp"
-                android:background="@drawable/btn4"
-                android:layout_marginTop="30dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PRETTY"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:layout_marginTop="20dp"/>
-            <LinearLayout
-                android:layout_gravity="top"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-                >
-                <!--美髮彩妝-->
-                <ImageButton
-                    android:id="@+id/btn5"
-                    android:layout_width="165dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/btn5"/>
-                <!--配件飾品-->
-                <ImageButton
-                    android:id="@+id/btn6"
-                    android:layout_width="165dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/btn6"
-                    android:layout_marginLeft="30dp"/>
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="其他"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:layout_marginTop="30dp"/>
-            <LinearLayout
-                android:layout_gravity="top"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp"
-                >
-                <!--雲端約會-->
-                <ImageButton
-                    android:id="@+id/btn7"
-                    android:layout_width="165dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/btn7"
-                    />
-                <!--電商導購-->
-                <ImageButton
-                    android:id="@+id/btn8"
-                    android:layout_width="165dp"
-                    android:layout_height="165dp"
-                    android:background="@drawable/btn8"
-                    android:layout_marginLeft="30dp"/>
-
-            </LinearLayout>
-
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn4" />
 
         </LinearLayout>
     </ScrollView>
